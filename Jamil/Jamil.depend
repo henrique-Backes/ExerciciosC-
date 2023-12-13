@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1702465534 source:c:\users\laboratorio.ensino\documents\jamil\main.cpp
+	<iostream>
+	<string.h>
+
