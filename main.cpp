@@ -1,53 +1,43 @@
 /*
-3. Faça o programa que apresenta a seguinte saída,
-perguntando ao usuário o número máximo (no exemplo, 9).
-Este número deve ser sempre ímpar.
-
-1 2 3 4 5 6 7 8 9
-  2 3 4 5 6 7 8
-    3 4 5 6 7
-      4 5 6
-        5
+    1. Crie um programa capaz de ler os dados de uma matriz quadrada de inteiros.
+    Ao final da leitura o programa deverá imprimir o número da linha que contém o menor dentre todos os números lidos.
 */
 
 #include <iostream>
+#include <string.h>
+
+#define lin 3 //Numero de linhas
+#define col 3 //Numero de colunas
 
 using namespace std;
 
+int mat[lin][col];
+
+int achaLinhaMenor(void);
+
 int main()
 {
-    bool impar = false;
-    int numMax;
+    scanf("%d %d %d", &mat[0][0], &mat[0][1], &mat[0][2]);
+    scanf("%d %d %d", &mat[1][0], &mat[1][1], &mat[1][2]);
+    scanf("%d %d %d", &mat[2][0], &mat[2][1], &mat[2][2]);
 
-    do{
-        cout << "Digite o munero maximo: ";
-        cin >> numMax;
-
-        if(numMax%2 == 1)
-            impar = false;
-        else
-            impar = true;
-    }while(impar);
-
-    int vet[numMax+1];
-
-    for(int i = 0; i <= numMax; i++){
-        vet[i] = i+1;
-    }
-
-    for(int i = 0; i < numMax; i++){
-        int lim = i*2;
-
-        for(int j=0; j < lim; j++)
-            cout << " ";
-
-        lim = numMax - (i);
-
-        for(int j = i; j < lim; j++)
-            cout << vet[j] << " ";
-
-        cout << endl;
-    }
+    cout << "Linha do menor: " << achaLinhaMenor() << endl;
 
     return 0;
+}
+
+
+int achaLinhaMenor(void){
+    int linhaMenor = 0,
+        menor = mat[0][0];
+
+    for(int i=0; i<lin; i++){
+        for(int j=0; j<col; j++){
+            if(menor > mat[i][j]){
+                menor = mat[i][j];
+                linhaMenor = i;
+            }
+        }
+    }
+    return linhaMenor+1;
 }
